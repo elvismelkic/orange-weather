@@ -4,7 +4,27 @@ html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+
+  /* 62.5% * 16px = 10px */
+  font-size: 62.5%;
 }
+
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (max-width: 62.5em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-width: 125em) {
+  html {
+    font-size: 75%;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -12,6 +32,7 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
+
 body {
   height: 100%;
   width: 100%;
@@ -19,28 +40,40 @@ body {
   font-family: Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue,
     sans-serif;
 }
+
 ul {
   padding: 0;
 }
+
 li {
   list-style-type: none;
 }
+
 #app {
   height: 100%;
   width: 100%;
 }
+
 .container {
   height: 100%;
   width: 100%;
 }
+
 .navbar {
-  height: 90px;
-  padding: 5px 30px;
+  min-height: 9rem;
+  padding: 0.5rem 3rem;
   background-image: linear-gradient(to right, #ff7c30, #ff9030);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+@media only screen and (max-width: 37.5em) {
+  .navbar {
+    flex-direction: column;
+  }
+}
+
 .main-container {
   min-height: 100vh;
   width: 100%;
@@ -51,123 +84,205 @@ li {
   justify-content: center;
   align-items: center;
 }
+
 .row {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
+
 .column {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .navbar-header {
-  font-size: 32px;
+  font-size: 3.2rem;
   color: #fff;
   text-decoration: none;
 }
+
+@media only screen and (max-width: 62.5em) {
+  .navbar-header {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .navbar-header {
+    margin: 0.75rem;
+  }
+}
+
 .container-header {
-  font-size: 50px;
+  font-size: 5rem;
   font-weight: 100;
   color: #fff;
-  margin: -250px 0 20px;
+  margin: -25rem 0 2rem;
+  text-align: center;
 }
+
 .input-field {
-  margin: 7.5px;
-  padding: 15px;
-  font-size: 15px;
+  margin: 0.75rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
   border: 1px solid #bbb;
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }
+
+@media only screen and (max-width: 37.5em) {
+  .input-field {
+    margin: 0.75rem;
+    padding: 1rem;
+  }
+}
+
 .get-weather-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 7.5px;
-  padding: 10px;
-  font-size: 15px;
+  margin: 0.75rem;
+  padding: 1rem;
+  font-size: 1.5rem;
   color: #fff;
   background-color: #00aa1b;
   border-style: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s;
 }
+
 .get-weather-button:active {
   transform: translateY(1px);
 }
+
+@media only screen and (max-width: 75em) {
+  .get-weather-button {
+    margin: 0.8333rem;
+    padding: 1.1111rem;
+    font-size: 1.6667rem;
+    border-radius: 0.5555rem;
+  }
+}
+
+@media only screen and (max-width: 62.5em) {
+  .get-weather-button {
+    margin: 0.9375rem;
+    padding: 1rem;
+    font-size: 1.875rem;
+    border-radius: 0.625rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .get-weather-button {
+    margin: 0.75rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+  }
+}
+
 .go-back-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 25px;
-  padding: 10px;
-  font-size: 15px;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: #fff;
   background-color: #ff7c30;
   border-style: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s;
 }
+
 .go-back-button:active {
   transform: translateY(1px);
 }
+
 .five-day-forecast {
+  min-height: 100vh;
   height: 100%;
   width: 100%;
   background-image: url("../images/background-pattern.svg");
   background-size: cover;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
+
 .forecast-header {
-  font-size: 50px;
+  font-size: 5rem;
   font-weight: 100;
   text-align: center;
   color: #fff;
-  margin: 80px;
+  margin: 10rem 0 8rem;
 }
+
+@media only screen and (max-width: 37.5em) {
+  .forecast-header {
+    margin: 4rem 0 4rem;
+    font-size: 4.5rem;
+  }
+}
+
 .five-day-list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 7rem 0;
 }
+
 .five-day-list li a {
-  width: 230px;
-  height: 270px;
+  width: 23rem;
+  height: 27rem;
   display: block;
   text-align: center;
-  margin: 20px 50px;
+  margin: 2rem 5rem;
   background-color: #fff;
   border: solid 1px #727272;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.25);
   transition: all 0.3s;
 }
+
 .five-day-list li a:hover {
   transform: translateY(-6px);
   box-shadow: 4px 11px 10px rgba(0, 0, 0, 0.15);
 }
+
 .five-day-list li * {
   backface-visibility: hidden;
 }
+
 .weather-icon {
-  height: 100px;
-  margin-bottom: 25px;
+  height: 10rem;
+  margin-bottom: 2.5rem;
 }
+
+@media only screen and (max-width: 37.5em) {
+  .weather-icon {
+    height: 8rem;
+  }
+}
+
 .weather-text {
-  margin: 5px;
-  font-size: 20px;
+  margin: 0.5rem;
+  font-size: 2rem;
   color: #727272;
 }
+
 .detail-link {
   text-decoration: none;
 }
+
 .weather-description {
   width: 100%;
   height: 100%;
@@ -176,12 +291,15 @@ li {
   justify-content: center;
   align-items: center;
 }
+
 .weather-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 }
+
 .day-details {
   height: 100%;
   width: 100%;
@@ -191,18 +309,26 @@ li {
   flex-direction: column;
   align-items: center;
 }
+
 .card {
-  width: 400px;
-  height: 500px;
-  padding: 30px;
+  width: 35rem;
+  height: 45rem;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #fff;
   border: solid 1px #727272;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+@media only screen and (max-width: 37.5em) {
+  .card {
+    width: 30rem;
+    height: 40rem;
+  }
 }
 
 ::-webkit-input-placeholder {

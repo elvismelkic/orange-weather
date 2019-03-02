@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, Redirect } from "react-router-dom";
+import queryString from "query-string";
+import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
 class CityInput extends React.Component {
@@ -15,15 +16,21 @@ class CityInput extends React.Component {
 
     this.setState(() => ({ city: value }));
   };
-  enterPress = event => {
-    if (event.keyCode === 13) {
-      console.log("pressed enter");
-    }
+  handleSubmit = event => {
+    const parsedCity = queryString.parse(this.props.location.search).city;
+
+    parsedCity === this.state.city.toLowerCase()
+      ? event.preventDefault()
+      : null;
   };
 
   render() {
     return (
-      <div className={this.props.direction}>
+      <form
+        action="/forecast"
+        className={this.props.direction}
+        onSubmit={this.handleSubmit}
+      >
         <input
           className="input-field"
           type="text"
@@ -31,7 +38,6 @@ class CityInput extends React.Component {
           placeholder="Atlanta, Georgia"
           value={this.state.city}
           onChange={this.handleChange}
-          onKeyUp={this.enterPress}
         />
         <Link
           className="get-weather-button"
@@ -42,7 +48,7 @@ class CityInput extends React.Component {
         >
           Get Weather
         </Link>
-      </div>
+      </form>
     );
   }
 }

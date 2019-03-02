@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import queryString from "query-string";
-import { fetchFiveDayWeather } from "../utils/api.js";
+import { sortWeatherData } from "../utils/api.js";
 import { Link } from "react-router-dom";
 import WeatherDescription from "./WeatherDescription";
 import WeatherInfo from "./WeatherInfo";
@@ -19,9 +19,9 @@ export default class Forecast extends React.Component {
 
     this.setState(() => ({ loading: true }));
     try {
-      const response = await fetchFiveDayWeather(parsedCity);
+      const response = await sortWeatherData(parsedCity);
 
-      response.cod >= 400 && response.cod <= 600
+      response.cityName === null
         ? this.setState(() => ({ error: "The city does not exist." }))
         : this.setState(() => ({
             cityWeather: response,
@@ -71,6 +71,9 @@ export default class Forecast extends React.Component {
             <h1 className="forecast-header">{cityWeather.cityName}</h1>
             <div className="card">
               <WeatherDescription day={cityWeather.currentWeather} />
+              <p className="weather-text">{`current temp: ${
+                cityWeather.currentWeather.temp
+              } °C`}</p>
               <WeatherInfo day={cityWeather.currentWeather} />
             </div>
 
