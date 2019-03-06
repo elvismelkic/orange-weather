@@ -16,21 +16,13 @@ class CityInput extends React.Component {
 
     this.setState(() => ({ city: value }));
   };
-  handleSubmit = event => {
-    const parsedCity = queryString.parse(this.props.location.search).city;
-
-    parsedCity === this.state.city.toLowerCase()
-      ? event.preventDefault()
-      : null;
+  handleClick = event => {
+    this.setState(() => ({ city: "" }));
   };
 
   render() {
     return (
-      <form
-        action="/forecast"
-        className={this.props.direction}
-        onSubmit={this.handleSubmit}
-      >
+      <div className={this.props.direction}>
         <input
           className="input-field"
           type="text"
@@ -41,6 +33,7 @@ class CityInput extends React.Component {
         />
         <Link
           className="get-weather-button"
+          onClick={this.handleClick}
           to={{
             pathname: "/forecast",
             search: "?city=" + window.encodeURI(this.state.city.toLowerCase())
@@ -48,7 +41,7 @@ class CityInput extends React.Component {
         >
           Get Weather
         </Link>
-      </form>
+      </div>
     );
   }
 }
